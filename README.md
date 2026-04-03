@@ -1,5 +1,5 @@
-
 import random
+
 # 5. sınıf 1. ünite kelimeleri ve anlamlari (örnektir)
 kelimeler = {
     "book": "kitap",
@@ -47,3 +47,40 @@ kelimeler = {
     "kind":"nazik",
     "nice":"güzel",
     "different":"farklı"
+}
+
+score = 0  # Başlangıç puanı
+
+def kelime_quiz():
+    global score
+    kelime, anlam = random.choice(list(kelimeler.items()))
+    cevap = input(f"Bu kelimenin Türkçesi nedir? '{kelime}': ").lower()
+    if cevap == anlam:
+        print("Tebrikler! Doğru cevap.")
+        score += 10
+    else:
+        print(f"Yanlış cevap. Doğru cevap: {anlam}")
+    print(f"Güncel puanınız: {score}")
+
+def kelime_listesi_göster():
+    print("Kelime listesi:")
+    for k, a in kelimeler.items():
+        print(f"- {k}: {a}")
+
+# Kullanici secimi
+while True:
+    print("\nSecenekler:")
+    print("1 - Kelime quiz")
+    print("2 - Kelime listesi göster")
+    print("3 - Çıkış")
+    secim = input("Seçiminizi girin (1/2/3): ")
+
+    if secim == "1":
+        kelime_quiz()
+    elif secim == "2":
+        kelime_listesi_göster()
+    elif secim == "3":
+        print(f"Programdan cikiliyor... Toplam puaniniz: {score}")
+        break
+    else:
+        print("Geçersiz seçim. Tekrar deneyin.")
